@@ -20,8 +20,8 @@ import lombok.ToString;
 public class Student {
 	private int sid;
 	private String name;
-	private LocalDate regDate;
-/*****
+	private LocalDate regDate; 
+/* ****
 	public Student() { }
 	public Student(int sid, String name, LocalDate regDate) {
 		this.sid = sid;
@@ -52,5 +52,5 @@ public class Student {
 	public void setRegDate(LocalDate regDate) {
 		this.regDate = regDate;
 	}
-*****/
+**** */
 }

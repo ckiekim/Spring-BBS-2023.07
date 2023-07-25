@@ -2,7 +2,7 @@ package com.ys.sbbs.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/sbbs/rest")
+@RequestMapping("/rest")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 

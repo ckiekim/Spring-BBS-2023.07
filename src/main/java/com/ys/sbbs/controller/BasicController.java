@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/sbbs/basic")
+@RequestMapping("/basic")
 public class BasicController {
 
 	// localhost:8080/sbbs/basic/basic1
