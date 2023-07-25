@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/basic")
+@RequestMapping("/sbbs/basic")
 public class BasicController {
 
 	// localhost:8080/sbbs/basic/basic1

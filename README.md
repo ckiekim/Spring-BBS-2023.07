@@ -1,6 +1,6 @@
-# Spring boot BBS project (2023.07)
+# SpringBoot BBS project (2023.07)
 
-### Spring boot BBS project
+### SpringBoot BBS project
 
 #### 빅데이터 머신러닝을 활용한 분석 및 UI 전문가 과정
 
