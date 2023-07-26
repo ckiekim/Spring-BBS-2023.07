@@ -42,14 +42,14 @@
         				<td>
         					<%-- 본인만이 수정권한이 있음 --%>
         					<c:if test="${uid eq user.uid}">
-        						<a href="/bbs/user/update?uid=${user.uid}"><i class="fas fa-user-edit me-1"></i></a>
+        						<a href="/sbbs/user/update/${user.uid}"><i class="fas fa-user-edit me-1"></i></a>
         					</c:if>
         					<c:if test="${uid ne user.uid}">
         						<a href="#" class="disabled-link"><i class="fas fa-user-edit me-1"></i></a>
         					</c:if>
         					<%-- 관리자만이 삭제권한이 있음 --%>
         					<c:if test="${uid eq 'admin'}">
-        						<a href="/bbs/user/delete?uid=${user.uid}"><i class="fas fa-user-minus"></i></a>
+        						<a href="/sbbs/user/delete/${user.uid}"><i class="fas fa-user-minus"></i></a>
         					</c:if>
         					<c:if test="${uid ne 'admin'}">
         						<a href="#" class="disabled-link"><i class="fas fa-user-minus"></i></a>
@@ -62,7 +62,7 @@
 					<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
 				<c:forEach var="page" items="${pageList}">
 					<li class="page-item ${(currentUserPage eq page) ? 'active' : ''}">
-						<a class="page-link" href="/bbs/user/list?page=${page}">${page}</a>
+						<a class="page-link" href="/sbbs/user/list/${page}">${page}</a>
 					</li>
 				</c:forEach>
 					<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>

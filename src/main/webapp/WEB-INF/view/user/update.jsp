@@ -24,7 +24,7 @@
         		<div class="row">
         			<div class="col-3"></div>
         			<div class="col-6">
-        				<form action="/bbs/user/update" method="post" enctype="multipart/form-data">
+        				<form action="/sbbs/user/update" method="post" enctype="multipart/form-data">
         					<input type="hidden" name="uid" value="${user.uid}">
         					<input type="hidden" name="hashedPwd" value="${user.pwd}">
         					<input type="hidden" name="filename" value="${user.profile}">
