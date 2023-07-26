@@ -99,7 +99,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirec:/sbbs/user/login";
+		return "redirect:/user/login";
 	}
 	
 	@GetMapping("/list/{page}")
@@ -118,9 +118,52 @@ public class UserController {
 	}
 	
 	@GetMapping("/update/{uid}") 
-	public String update(@PathVariable String uid, Model model) {
+	public String updateForm(@PathVariable String uid, Model model) {
 		User user = userService.getUser(uid);
 		model.addAttribute("user", user);
 		return "user/update";
+	}
+	
+	@PostMapping("/update")
+	public String updateProc(MultipartHttpServletRequest req, HttpSession session, Model model) {
+		String uid = req.getParameter("uid");
+		String hashedPwd = req.getParameter("hashedPwd");
+		String filename = req.getParameter("filename");
+		String pwd = req.getParameter("pwd");
+		String pwd2 = req.getParameter("pwd2");
+		String uname = req.getParameter("uname");
+		String email = req.getParameter("email");
+		
+		String addr = req.getParameter("addr");
+		
+		boolean pwdFlag = false;
+		if (pwd != null && pwd.length() > 1 && pwd.equals(pwd2)) {
+			hashedPwd = BCrypt.hashpw(pwd, BCrypt.gensalt());
+			pwdFlag = true;
+		} 
+		User user = new User(uid, hashedPwd, uname, email, filename, addr);
+		userService.updateUser(user);
+		session.setAttribute("uname", uname);
+		session.setAttribute("email", email);
+		session.setAttribute("addr", addr);
+		session.setAttribute("profile", filename);
+		if (pwdFlag) {
+			model.addAttribute("msg", "패스워드가 변경이 되었습니다.");
+			model.addAttribute("url", "/sbbs/user/list/" + session.getAttribute("currentUserPage"));
+			return "common/alertMsg";
+		} else
+			return "redirect:/user/list/" + session.getAttribute("currentUserPage");
+	}
+	
+	@GetMapping("/delete/{uid}")
+	public String delete(@PathVariable String uid, Model model) {
+		model.addAttribute("uid", uid);
+		return "user/delete";
+	}
+	
+	@GetMapping("/deleteConfirm/{uid}")
+	public String deleteConfirm(@PathVariable String uid, HttpSession session) {
+		userService.deleteUser(uid);
+		return "redirect:/user/list/" + session.getAttribute("currentUserPage");
 	}
 }
