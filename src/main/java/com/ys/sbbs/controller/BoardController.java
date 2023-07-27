@@ -91,8 +91,12 @@ public class BoardController {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		List<MultipartFile> uploadFileList = req.getFiles("files");
+		String sessionUid = (String) session.getAttribute("uid");
+
 		List<String> fileList = new ArrayList<>();
 		for (MultipartFile part: uploadFileList) {
+			if (part.getContentType().contains("octet-stream"))		// 첨부 파일이 없는 경우 application/octet-stream
+				continue;
 			String filename = part.getOriginalFilename();
 			String uploadPath = uploadDir + "upload/" + filename;
 			try {
@@ -104,9 +108,9 @@ public class BoardController {
 		}
 		JsonUtil ju = new JsonUtil();
 		String files = ju.listToJson(fileList);
-		String sessionUid = (String) session.getAttribute("uid");
 		
 		Board board = new Board(sessionUid, title, content, files);
+		System.out.println(board);
 		boardService.insertBoard(board);
 		return "redirect:/board/list?p=1&f=&q=";
 	}
