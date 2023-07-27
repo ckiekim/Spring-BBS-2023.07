@@ -115,4 +115,16 @@ public class BoardController {
 		return "redirect:/board/list?p=1&f=&q=";
 	}
 	
+	@GetMapping("/delete/{bid}")
+	public String delete(@PathVariable int bid, Model model) {
+		model.addAttribute("bid", bid);
+		return "board/delete";
+	}
+	
+	@GetMapping("/deleteConfirm/{bid}")
+	public String deleteConfirm(@PathVariable int bid, HttpSession session) {
+		boardService.deleteBoard(bid);
+		return "redirect:/board/list?p=" + session.getAttribute("currentBoardPage") + "&f=&q=";
+	}
+	
 }

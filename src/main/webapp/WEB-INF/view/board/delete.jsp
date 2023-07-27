@@ -24,8 +24,8 @@
         						<strong class="card-title">삭제하시겠습니까?</strong>
         						<p class="card-text text-center">
         							<br>
-        							<button class="btn btn-primary" onclick="location.href='/bbs/board/deleteConfirm?bid=${param.bid}'">삭제</button>
-        							<button class="btn btn-secondary" onclick="location.href='/bbs/board/list?p=${currentBoardPage}&f=&q='">취소</button>
+        							<button class="btn btn-primary" onclick="location.href='/sbbs/board/deleteConfirm/${bid}'">삭제</button>
+        							<button class="btn btn-secondary" onclick="location.href='/sbbs/board/list?p=${currentBoardPage}&f=&q='">취소</button>
         						</p>
         					</div>
         				</div>
