@@ -64,7 +64,7 @@
         			<tr>
         				<td>${board.bid}</td>
         				<td>
-        					<a href="/bbs/board/detail/${board.bid}/${board.uid}">${board.title}
+        					<a href="/sbbs/board/detail/${board.bid}/${board.uid}">${board.title}
         					<c:if test="${board.replyCount ge 1}">
         						<span class="text-danger">[${board.replyCount}]</span>
         					</c:if>

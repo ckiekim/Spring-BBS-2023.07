@@ -23,11 +23,11 @@
 			<div class="col-sm-9">
                 <h3><strong>게시글 상세 조회</strong>
                     <span style="font-size: 0.6em;">
-                        <a href="/bbs/board/list?p=${currentBoardPage}&f=&q=" class="ms-5""><i class="fas fa-list-ul"></i> 목록</a>
+                        <a href="/sbbs/board/list?p=${currentBoardPage}&f=&q=" class="ms-5""><i class="fas fa-list-ul"></i> 목록</a>
 					
 					<%-- 본인만 수정 가능 --%>
 					<c:if test="${uid eq board.uid}">
-                        <a href="/bbs/board/update?bid=${board.bid}" class="ms-3"><i class="far fa-edit"></i> 수정</a>  <!-- uid, bid -->
+                        <a href="/sbbs/board/update/${board.bid}" class="ms-3"><i class="far fa-edit"></i> 수정</a>  <!-- uid, bid -->
 					</c:if>
 					<c:if test="${uid ne board.uid}">
 						<a href="#" class="ms-3 disabled-link"><i class="far fa-edit"></i> 수정</a>
@@ -35,7 +35,7 @@
 					
 					<%-- 본인만 삭제 가능 --%>
 					<c:if test="${uid eq board.uid}">
-                        <a href="/bbs/board/delete?bid=${board.bid}" class="ms-3"><i class="far fa-edit"></i> 삭제</a>  <!-- uid, bid -->
+                        <a href="/sbbs/board/delete/${board.bid}" class="ms-3"><i class="far fa-edit"></i> 삭제</a>  <!-- uid, bid -->
 					</c:if>
 					<c:if test="${uid ne board.uid}">
 						<a href="#" class="ms-3 disabled-link"><i class="far fa-edit"></i> 삭제</a>
@@ -49,7 +49,7 @@
                         <h6>글번호: ${board.bid} | ${fn:replace(board.modTime, 'T', ' ')}</h6>
                         <h6>첨부파일: 
                         <c:forEach var="file" items="${fileList}">
-                        	<a href="/bbs/file/download?file=${file}" class="me-2" download>${file}</a>
+                        	<a href="/sbbs/file/download/${file}" class="me-2" download>${file}</a>
                         </c:forEach>
                         </h6>
                     </div>
@@ -88,7 +88,7 @@
                     	</c:if>
                     </c:forEach>
                         
-                        <form class="form-inline" action="/bbs/reply/write" method="post">
+                        <form class="form-inline" action="/sbbs/reply/write" method="post">
                             <input type="hidden" name="bid" value="${board.bid}">
                             <input type="hidden" name="uid" value="${board.uid}">
                             <div class="row d-flex mt-2">
