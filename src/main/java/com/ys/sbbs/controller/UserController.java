@@ -101,8 +101,8 @@ public class UserController {
 			
 			// 환영 메세지
 			model.addAttribute("msg", user.getUname() + "님 환영합니다.");
-//			model.addAttribute("url", "/sbbs/board/list?p=1&f=&q=");
-			model.addAttribute("url", "/sbbs/user/list/1");
+			model.addAttribute("url", "/sbbs/board/list?p=1&f=&q=");
+//			model.addAttribute("url", "/sbbs/user/list/1");
 			return "common/alertMsg";
 		} else if (result == UserService.WRONG_PASSWORD) {
 			model.addAttribute("msg", "잘못된 패스워드입니다. 다시 입력하세요.");
