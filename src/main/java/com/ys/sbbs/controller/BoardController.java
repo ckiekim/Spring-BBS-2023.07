@@ -78,12 +78,14 @@ public class BoardController {
 		model.addAttribute("board", board);
 		List<Reply> replyList = replyService.getReplyList(bid);
 		model.addAttribute("replyList", replyList);
-		return "board/detail";
+//		return "board/detail";
+		return "board/detailEditor";
 	}
 	
 	@GetMapping("/write")
 	public String writeForm() {
-		return "board/write";
+//		return "board/write";
+		return "board/writeEditor";
 	}
 	
 	@PostMapping("/write")
@@ -125,7 +127,8 @@ public class BoardController {
 			List<String> fileList = new JsonUtil().jsonToList(uploadedFiles);
 			session.setAttribute("fileList", fileList);
 		}
-		return "board/update";
+//		return "board/update";
+		return "board/updateEditor";
 	}
 	
 	@PostMapping("/update")

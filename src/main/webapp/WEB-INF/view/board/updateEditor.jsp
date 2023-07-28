@@ -73,7 +73,7 @@
 	<%@ include file="../common/bottom.jspf" %>
 	<script>
 		CKEDITOR.replace('content', {
-			filebrowserImageUploadUrl: '/bbs/file/imageUpload',
+			filebrowserImageUploadUrl: '/sbbs/file/imageUpload',
 			filebrowserUploadMethod: 'form',
 	        height: 300, width: 700
 	    });
