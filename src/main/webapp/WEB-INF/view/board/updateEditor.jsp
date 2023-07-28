@@ -24,7 +24,7 @@
         		<div class="row">
         			<div class="col-1"></div>
         			<div class="col-10">
-        				<form action="/bbs/board/update" method="post" enctype="multipart/form-data">
+        				<form action="/sbbs/board/update" method="post" enctype="multipart/form-data">
         					<input type="hidden" name="bid" value="${board.bid}">
         					<table class="table table-borderless">
         						<tr>
