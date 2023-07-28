@@ -19,7 +19,7 @@ public class ReplyController {
 
 	@PostMapping("/write")
 	public String writeProc(int bid, String uid, String comment, HttpSession session) {
-		String sessionUid = (String) session.getAttribute("uid");
+		String sessionUid = (String) session.getAttribute("sessUid");
 		int isMine = sessionUid.equals(uid) ? 1 : 0;
 		Reply reply = new Reply(comment, isMine, sessionUid, bid);
 		

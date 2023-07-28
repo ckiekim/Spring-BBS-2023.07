@@ -86,7 +86,7 @@ public class UserController {
 	public String loginProc(String uid, String pwd, HttpServletRequest req, HttpSession session, Model model) {
 		int result = userService.login(uid, pwd);
 		if (result == UserService.CORRECT_LOGIN) {
-			session.setAttribute("uid", uid);
+			session.setAttribute("sessUid", uid);
 			User user = userService.getUser(uid);
 			session.setAttribute("uname", user.getUname());
 			session.setAttribute("email", user.getEmail());

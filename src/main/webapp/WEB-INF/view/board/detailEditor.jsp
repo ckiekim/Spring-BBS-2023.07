@@ -25,18 +25,18 @@
                         <a href="/sbbs/board/list?p=${currentBoardPage}&f=&q=" class="ms-5""><i class="fas fa-list-ul"></i> 목록</a>
 					
 					<%-- 본인만 수정 가능 --%>
-					<c:if test="${uid eq board.uid}">
+					<c:if test="${sessUid eq board.uid}">
                         <a href="/sbbs/board/update/${board.bid}" class="ms-3"><i class="far fa-edit"></i> 수정</a>  <!-- uid, bid -->
 					</c:if>
-					<c:if test="${uid ne board.uid}">
+					<c:if test="${sessUid ne board.uid}">
 						<a href="#" class="ms-3 disabled-link"><i class="far fa-edit"></i> 수정</a>
 					</c:if>
 					
 					<%-- 본인만 삭제 가능 --%>
-					<c:if test="${uid eq board.uid}">
+					<c:if test="${sessUid eq board.uid}">
                         <a href="/sbbs/board/delete/${board.bid}" class="ms-3"><i class="far fa-edit"></i> 삭제</a>  <!-- uid, bid -->
 					</c:if>
-					<c:if test="${uid ne board.uid}">
+					<c:if test="${sessUid ne board.uid}">
 						<a href="#" class="ms-3 disabled-link"><i class="far fa-edit"></i> 삭제</a>
 					</c:if>
                     </span>
