@@ -23,7 +23,8 @@
                 
                 <div class="mt-5">
                     <i class="fa fa-envelope me-2"></i><a href="#">${email}</a><br>
-                    <img src="/sbbs/img/addr.png" height="16" class="me-2" id="addr">${addr}
+                    <img src="/sbbs/img/addr.png" height="16" class="me-2">
+                    <span id="addr">${addr}</span>
                     <a href="#" id="getWeatherButton"><span class="badge bg-secondary">날씨</span></a>
                 </div>
                 <div id="weather"></div>

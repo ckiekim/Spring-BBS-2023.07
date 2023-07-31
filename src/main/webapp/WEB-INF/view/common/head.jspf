@@ -13,4 +13,4 @@
         * { font-family: 'Noto Sans KR', sans-serif; }
         a { text-decoration: none; }
     </style>
-    <script src="/sbbs/js/aside.js?v=1"></script>	<!-- aside.js를 변경할 경우 v=1의 숫자값을 변경 -->
+    <script src="/sbbs/js/aside.js?v=1"></script>	<!-- aside.js를 변경할 경우 v의 숫자값을 변경 -->
