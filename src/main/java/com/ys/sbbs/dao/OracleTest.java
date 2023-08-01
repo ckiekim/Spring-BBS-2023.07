@@ -8,7 +8,8 @@ public class OracleTest {
 
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";		// XEPDB1
 		String user = "ysuser";
 		String password = "yspass";
 
