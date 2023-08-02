@@ -6,13 +6,13 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ys.sbbs.dao.UserDaoMySQL;
+import com.ys.sbbs.dao.UserDaoOracle;
 import com.ys.sbbs.entity.User;
 
-//@Service
-public class UserServiceMySQLImpl implements UserService {
-	@Autowired private UserDaoMySQL userDao;
-	
+@Service
+public class UserServiceOracleImpl implements UserService {
+	@Autowired private UserDaoOracle userDao;
+
 	@Override
 	public int getUserCount() {
 		int count = userDao.getUserCount();
@@ -27,8 +27,9 @@ public class UserServiceMySQLImpl implements UserService {
 
 	@Override
 	public List<User> getUserList(int page) {
+		int maxrow = page * 10;
 		int offset = (page - 1) * 10;
-		List<User> list = userDao.getUserList(offset);
+		List<User> list = userDao.getUserList(maxrow, offset);
 		return list;
 	}
 
@@ -39,7 +40,9 @@ public class UserServiceMySQLImpl implements UserService {
 
 	@Override
 	public void updateUser(User user) {
-		userDao.updateUser(user);
+		System.out.println(user);
+		userDao.updateUser(user.getPwd(), user.getUname(), user.getEmail(), user.getProfile(),
+							user.getAddr(), user.getUid());
 	}
 
 	@Override

@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ys.sbbs.dao.BoardDaoMySQL;
+import com.ys.sbbs.dao.BoardDaoOracle;
 import com.ys.sbbs.entity.Board;
 
-//@Service
-public class BoardServiceMySQLImpl implements BoardService {
-	@Autowired private BoardDaoMySQL boardDao; 
-
+@Service
+public class BoardServiceOracleImpl implements BoardService {
+	@Autowired private BoardDaoOracle boardDao;
+	
 	@Override
 	public Board getBoard(int bid) {
 		Board board = boardDao.getBoard(bid);
@@ -27,9 +27,10 @@ public class BoardServiceMySQLImpl implements BoardService {
 
 	@Override
 	public List<Board> listBoard(String field, String query, int page) {
+		int maxrow = page * LIST_PER_PAGE;
 		int offset = (page - 1) * LIST_PER_PAGE;
 		query = "%" + query + "%";
-		List<Board> list = boardDao.listBoard(field, query, offset);
+		List<Board> list = boardDao.listBoard(field, query, maxrow, offset);
 		return list;
 	}
 

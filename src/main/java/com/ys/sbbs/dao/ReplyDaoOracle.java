@@ -11,7 +11,7 @@ import com.ys.sbbs.entity.Reply;
 @Mapper
 public interface ReplyDaoOracle {
 
-	@Select("SELECT r.rid, r.comment, r.regTime, r.isMine, r.\"uid\", r.bid, u.uname FROM reply r "
+	@Select("SELECT r.rid, r.\"comment\", r.regTime, r.isMine, r.\"uid\", r.bid, u.uname FROM reply r "
 			+ "	JOIN users u ON r.\"uid\"=u.\"uid\" WHERE r.bid=#{bid}")
 	List<Reply> getReplyList(int bid);
 	

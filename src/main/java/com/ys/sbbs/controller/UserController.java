@@ -162,6 +162,8 @@ public class UserController {
 		} 
 		String filename = null;
 		if (filePart != null) {		// 새로운 이미지로 변경
+			System.out.println("filePart is not null!!!");
+			System.out.println(filePart.getContentType());
 			if (oldFilename != null) {		// 기존 이미지가 있으면 이미지 삭제
 				File oldFile = new File(uploadDir + "profile/" + oldFilename);
 				oldFile.delete();
