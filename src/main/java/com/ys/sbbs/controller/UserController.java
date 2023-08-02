@@ -53,7 +53,7 @@ public class UserController {
 		if (pwd.equals(pwd2) && pwd.length()>=1) {
 			String hashedPwd = BCrypt.hashpw(pwd, BCrypt.gensalt());
 			String filename = null;
-			if (filePart != null) {
+			if (filePart.getContentType().contains("image")) {
 				filename = filePart.getOriginalFilename();
 				String profilePath = uploadDir + "profile/" + filename;
 				try {
@@ -161,9 +161,7 @@ public class UserController {
 			pwdFlag = true;
 		} 
 		String filename = null;
-		if (filePart != null) {		// 새로운 이미지로 변경
-			System.out.println("filePart is not null!!!");
-			System.out.println(filePart.getContentType());
+		if (filePart.getContentType().contains("image")) {		// 새로운 이미지로 변경
 			if (oldFilename != null) {		// 기존 이미지가 있으면 이미지 삭제
 				File oldFile = new File(uploadDir + "profile/" + oldFilename);
 				oldFile.delete();

@@ -29,15 +29,13 @@ public interface UserDaoOracle {
 	List<User> getUserList(int maxrow, int offset);
 	
 	@Insert("insert into users values (#{uid}, #{pwd}, #{uname}, #{email},"
-			+ " default, default, #{profile}, #{addr})")
+			+ " default, default, #{profile, jdbcType=VARCHAR}, #{addr, jdbcType=VARCHAR})")
 	void insertUser(User user);
 	
-	@Update("update users set pwd=#{pwd},"
-			+ " uname=#{uname},email=#{email},\"profile\"=#{profile},addr=#{addr}"
+	@Update("update users set pwd=#{pwd}, uname=#{uname}, email=#{email},"
+			+ " \"profile\"=#{profile, jdbcType=VARCHAR}, addr=#{addr, jdbcType=VARCHAR}"
 			+ " where \"uid\"=#{uid}")
-//	@Update("update users set pwd=#{pwd}, uname=#{uname}, email=#{email},"
-//			+ " \"profile\"=#{profile}, addr=#{addr} where \"uid\"=#{uid}")
-	void updateUser(String pwd, String uname, String email, String profile, String addr, String uid);
+	void updateUser(User user);
 	
 	@Update("update users set isDeleted=1 where \"uid\"=#{uid}")
 	void deleteUser(String uid);

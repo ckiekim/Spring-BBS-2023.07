@@ -40,9 +40,7 @@ public class UserServiceOracleImpl implements UserService {
 
 	@Override
 	public void updateUser(User user) {
-		System.out.println(user);
-		userDao.updateUser(user.getPwd(), user.getUname(), user.getEmail(), user.getProfile(),
-							user.getAddr(), user.getUid());
+		userDao.updateUser(user);
 	}
 
 	@Override
