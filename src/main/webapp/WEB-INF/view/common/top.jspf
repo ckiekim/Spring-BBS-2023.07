@@ -17,6 +17,9 @@
                     <a class="nav-link ${(menu eq 'user') ? 'active' : ''}" href="/sbbs/user/list/1"><i class="fas fa-user-friends"></i> 사용자</a>
                 </li>
                 <li class="nav-item ms-3">
+                    <a class="nav-link ${menu eq 'schedule' ? 'active' : ''}" href="/sbbs/schedule/calendar"><i class="fa-solid fa-calendar-days"></i> 스케쥴</a>
+                </li>
+                <li class="nav-item ms-3">
                     <a class="nav-link" href="/sbbs/user/logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
                 </li>
             </ul>
