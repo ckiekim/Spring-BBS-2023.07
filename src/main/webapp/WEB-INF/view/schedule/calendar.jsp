@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <c:set var="height" value="${600 / numberOfWeeks}"></c:set>
 <c:set var="todaySdate" value="${fn:substring(today,0,4)}${fn:substring(today,5,7)}${fn:substring(today,8,10)}"></c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
     <%@ include file="../common/head.jspf" %>
     <style>
         th { text-align: center; width: 14.28%;}
+        .disabled-link	{ pointer-events: none; }
     </style>
-    <script src="/sbbs/js/calendar.js"></script>
+    <script src="/sbbs/js/calendar.js?v=1"></script>
 </head>
 <body>
 	<%@ include file="../common/top.jspf" %>
@@ -34,7 +35,14 @@
                         <a href="/sbbs/schedule/calendar/right2"><i class="fa-solid fa-angles-right"></i></a>
                     </div>
                     <div>
-                    	<a href="#" onclick="addAnniversary()"><i class="fa-solid fa-pen me-3"></i></a>
+                    	<a href="#" onclick="addAnniversary()"><i class="fa-solid fa-pen me-2"></i></a>
+                    	<%-- 관리자만이 공휴일/24절기 추가권한이 있음 --%>
+        				<c:if test="${sessUid eq 'admin'}">
+                    		<a href="#" onclick="addAnnivList()"><i class="fa-solid fa-calendar-plus"></i></a>
+                    	</c:if>
+                    	<c:if test="${sessUid ne 'admin'}">
+       						<a href="#" class="disabled-link"><i class="fa-solid fa-calendar-plus"></i></a>
+       					</c:if>
                     </div>
                 </div>
                 <table class="table table-bordered mt-2">
@@ -264,6 +272,55 @@
 	                            <td>
 	                                <label for="annivDate">날짜</label>
 	                                <input class="form-control" type="date" id="annivDate" name="annivDate">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td style="text-align: right;">
+	                                <button class="btn btn-primary me-2" type="submit">제출</button>
+	                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">종료</button>
+	                            </td>
+	                        </tr>
+	                    </table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="addAnnivListModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">공휴일/24절기 추가</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+			
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form action="/sbbs/schedule/insertAnnivList" method="post">
+						<table class="table table-borderless">
+	                        <tr>
+	                            <td>
+	                            	<input type="radio" class="form-check-input" name="option" value="공휴일" checked> 공휴일
+	                            	<input type="radio" class="form-check-input ms-3" name="option" value="24절기"> 24절기
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                <label for="year">년도</label>
+	                                <select class="form-select" id="year" name="year">
+	                                	<option>2020</option>
+	                                	<option>2021</option>
+	                                	<option>2022</option>
+	                                	<option selected>2023</option>
+	                                	<option>2024</option>
+	                                	<option>2025</option>
+	                                	<option>2026</option>
+	                                	<option>2027</option>
+	                                	<option>2028</option>
+	                                	<option>2029</option>
+	                                </select>
 	                            </td>
 	                        </tr>
 	                        <tr>

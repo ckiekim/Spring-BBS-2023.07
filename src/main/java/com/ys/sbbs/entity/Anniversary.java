@@ -1,5 +1,6 @@
 package com.ys.sbbs.entity;
 
+// 기념일을 개인별로 구분해야 함
 public class Anniversary {
 	private int aid;
 	private String aname;

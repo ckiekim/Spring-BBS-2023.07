@@ -30,7 +30,7 @@ import com.ys.sbbs.utility.SchedUtil;
 public class ScheduleController {
 	@Autowired private ScheduleService schedService;
 	@Autowired private AnniversaryService annivService;
-	private SchedUtil schedUtil = new SchedUtil();
+	@Autowired private SchedUtil schedUtil;
 	
 	@GetMapping(value = {"/calendar/{arrow}", "/calendar"})
 	public String calendar(@PathVariable(required = false) String arrow, HttpSession session, Model model) {
@@ -199,6 +199,14 @@ public class ScheduleController {
 		String adate = req.getParameter("annivDate").replace("-", "");
 		Anniversary anniv = new Anniversary(aname, adate, isHoliday);
 		annivService.insert(anniv);
+		return "redirect:/schedule/calendar";
+	}
+	
+	@PostMapping("/insertAnnivList")
+	public String insertAnnivList(String option, int year) {
+		List<Anniversary> list = schedUtil.getAnnivList(option, year);
+		for (Anniversary anniv: list)
+			annivService.insert(anniv);
 		return "redirect:/schedule/calendar";
 	}
 	

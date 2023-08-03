@@ -62,3 +62,7 @@ function deleteSchedule() {
 function addAnniversary() {
 	$('#addAnnivModal').modal('show');
 }
+
+function addAnnivList() {
+	$('#addAnnivListModal').modal('show');
+}
